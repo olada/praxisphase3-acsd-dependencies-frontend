@@ -1,0 +1,97 @@
+.node {
+    cursor: pointer;
+}
+
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+}
+
+.node text {
+    font: 12px sans-serif;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+}
+
+h1{
+    color:steelblue;
+    text-align: left;
+    padding-left:0;
+    padding-right: 0;
+}
+img{
+    margin-left: 21px !important;
+    width:30px;
+    height:45px;
+    padding-left:0;
+    padding-right: 0;
+}
+.col-1{
+    padding-right:0;
+}
+
+.col-11{
+    padding-left:0;
+    padding-right: 0;
+}
+header{
+    background:rgb(224, 237, 248);
+    margin-left:0;
+    margin-right:120;
+    height:70px;
+    align:left;
+}
+footer{
+    margin-right: 21px !important;
+    margin-left: 21px !important;
+}
+#date{
+    text-align: right;
+    color:rgb(105, 105, 105);
+    font-size:0.75rem;
+}
+body{
+    background:rgb(234, 234, 243);
+    padding-left:0;
+    padding-right: 0;
+    
+}
+svg{
+    background:rgb(234, 234, 243);
+    padding-left:0;
+    padding-right: 0;
+    margin-right: 21px !important;
+    margin-left: 21px !important;
+    
+
+}
+#inputToHandle{
+    margin-right: 21px !important;
+    margin-left: 21px !important;
+    background: rgb(182, 180, 180);
+    border-color: rgb(95, 94, 94);
+    height:80px;
+    padding-top:20px;
+    width:960px !important;
+    padding-left: 15px;
+    border-radius:5px;
+}
+
+form{
+    padding-top:50px;
+
+}
+#attributeName{
+    border:1px solid #ccc;
+    border-radius: 4px;
+}
+button{
+    border-radius:4px;
+}
+
+
