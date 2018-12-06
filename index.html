@@ -29,7 +29,7 @@
             <div class="row">
                 <div id="inputToHandle">
                     <span>Trage hier den Namen des gewünschten Attributes ein:</span>
-                    <input id="attributeName" type="text" />
+                    <input id="attributeName" name="tollerName" type="text" />
                     <button type="submit" id="submitAttribute" disabled="disabled">
                         submit
                     </button>
@@ -38,7 +38,6 @@
                     </button>
                 </div>
             </div>
-
         </form>
         <p id="demo"></p>
         <!-- load the d3.js library -->
@@ -46,250 +45,52 @@
 
         <script type="text/javascript">
 
-
-
-            // the Original Tree Object
-            var treeDataOG = [
-                {
-                    "name": "Top Level",
-                    "parent": "null",
-                    "children": [
-                        {
-                            "name": "Level 2: A",
-                            "parent": "Top Level",
-                            "children": [
-                                {
-                                    "name": "Son of A",
-                                    "parent": "Level 2: A",
-                                    "children": [
-                                        {
-                                            "name": "Grandson of A",
-                                            "parent": "Son of A"
-                                        },
-                                        {
-                                            "name": "Granddaughter of A",
-                                            "parent": "Son of A"
-                                        }
-
-                                    ]
-                                },
-                                {
-                                    "name": "udo",
-                                    "parent": "Level 2: A",
-                                    "children": [
-                                        {
-                                            "name": "Granddaughter of A",
-                                            "parent": "udo"
-                                        }
-                                    ]
-                                }
-
-                            ]
-
-                        },
-                        {
-                            "name": "Level 2: B",
-                            "parent": "Top Level",
-                            "children": [
-                                {
-                                    "name": "Son of B",
-                                    "parent": "Level 2: B"
-                                },
-                                {
-                                    "name": "Daughter of B",
-                                    "parent": "Level 2: B"
-                                }
-
-                            ]
-                        }
-
-                    ]
-                }
-            ];
-            // the first updated Tree Object
-            var treeData_new1 = [
-                {
-                    "name": "Top Level NEW1",
-                    "parent": "null",
-                    "children": [
-                        {
-                            "name": "Level 2: A",
-                            "parent": "Top Level NEW1",
-                            "children": [
-                                {
-                                    "name": "Son of A",
-                                    "parent": "Level 2: A",
-                                    "children": [
-                                        {
-                                            "name": "Grandson of A",
-                                            "parent": "Son of A"
-                                        },
-                                        {
-                                            "name": "Granddaughter of A",
-                                            "parent": "Son of A"
-                                        },
-                                        {
-                                            "name": "Granddaughter of A",
-                                            "parent": "Son of A"
-                                        }
-
-                                    ]
-                                },
-                                {
-                                    "name": "Daughter of A",
-                                    "parent": "Level 2: A",
-                                    "children": [
-                                        {
-                                            "name": "Granddaughter of A",
-                                            "parent": "Daughter of A"
-                                        }
-                                    ]
-                                }
-
-                            ]
-
-                        },
-                        {
-                            "name": "Level 2: B",
-                            "parent": "Top Level NEW1",
-                            "children": [
-                                {
-                                    "name": "Son of B",
-                                    "parent": "Level 2: B"
-                                },
-                                {
-                                    "name": "Daughter of B",
-                                    "parent": "Level 2: B"
-                                }
-
-                            ]
-                        }
-
-                    ]
-                }
-            ];
-
-            // the second updated Tree Object
-            var treeData_new2 = [
-                {
-                    "name": "Top Level NEW2",
-                    "parent": "null",
-                    "children": [
-                        {
-                            "name": "Level 2: A",
-                            "parent": "Top Level NEW2",
-                            "children": [
-                                {
-                                    "name": "Son of A",
-                                    "parent": "Level 2: A",
-                                    "children": [
-                                        {
-                                            "name": "Grandson of A",
-                                            "parent": "Son of A"
-                                        },
-                                        {
-                                            "name": "Granddaughter of A",
-                                            "parent": "Son of A"
-                                        },
-                                        {
-                                            "name": "Granddaughter of A",
-                                            "parent": "Son of A"
-                                        }
-
-                                    ]
-                                },
-                                {
-                                    "name": "Daughter of A",
-                                    "parent": "Level 2: A",
-                                    "children": [
-                                        {
-                                            "name": "Granddaughter of A",
-                                            "parent": "Daughter of A"
-                                        }
-                                    ]
-                                }
-
-                            ]
-
-                        },
-                        {
-                            "name": "Level 2: B",
-                            "parent": "Top Level NEW2",
-                            "children": [
-                                {
-                                    "name": "Son of B",
-                                    "parent": "Level 2: B"
-                                },
-                                {
-                                    "name": "Daughter of B",
-                                    "parent": "Level 2: B"
-                                }
-
-                            ]
-                        }
-
-                    ]
-                }
-            ];
-
-
             var input = document.getElementById("attributeName");
 
             var inputButton = document.getElementById("submitAttribute");
+
+            var form = document.getElementById("myForm");
 
             //Mapping of the Tree Objects
             var myMap = new Map();
             myMap.set('0', '[{ "name": "Top Level NEW1", "parent": "null", "children": [{ "name": "Level 2: A", "parent": "Top Level NEW1", "children": [{ "name": "Son of A", "parent": "Level 2: A", "children": [{ "name": "Grandson of A", "parent": "Son of A" }, { "name": "Granddaughter of A", "parent": "Son of A" }, { "name": "Granddaughter of A", "parent": "Son of A" }] }, { "name": "Daughter of A", "parent": "Level 2: A", "children": [{ "name": "Granddaughter of A", "parent": "Daughter of A" }] }] }, { "name": "Level 2: B", "parent": "Top Level NEW1", "children": [{ "name": "Son of B", "parent": "Level 2: B" }, { "name": "Daughter of B", "parent": "Level 2: B" }] }] }]');
             myMap.set('1', '[{"name":"Top Level","parent":"null","children":[{"name":"Level 2: A","parent":"Top Level","children":[{"name":"Son of A","parent":"Level 2: A","children":[{"name":"Grandson of A","parent":"Son of A"},{"name":"Granddaughter of A","parent":"Son of A"}]},{"name":"Daughter of A","parent":"Level 2: A","children":[{"name":"Granddaughter of A","parent":"Daughter of A"}]}]},{"name":"Level 2: B","parent":"Top Level","children":[{"name":"Son of B","parent":"Level 2: B"},{"name":"Daughter of B","parent":"Level 2: B"}]}]}]');
-            
-            function returnInput(event) {
 
+            function enableSubmitButton(event) {
                 if (input.value != "") {
                     inputButton.disabled = false;
-                    if (input.value == '0') {
-                        var parsedTree = JSON.parse(myMap.get('0'));
-                        root = parsedTree[0];
-                        root.x0 = height / 2;
-                        root.y0 = 0;
-                        update(root);
-                        console.log(input.value);
-                    }
+                   
                 }
                 else {
-                    
                     inputButton.disabled = true;
+                    alert('Fehler, bitte gib einen gültigen Wert ein');
                 }
             }
-            
+            function updateTree() {
+                if (input.value == '0') {
+                    var parsedTree = JSON.parse(myMap.get(input.value));
+                }
+                else if (input.value == '1') {
+                    var parsedTree = JSON.parse(myMap.get(input.value));
+                }
+                else {
+                    alert('Fehler, bitte gib einen gültigen Wert ein');
+                }
+                root = parsedTree[0];
+                root.x0 = height / 2;
+                root.y0 = 0;
+                update(root);
+                console.log(root);
+
+            }
             input.addEventListener('keyup', function (event) {
-                returnInput(event);
-            }, false);
-
-            // Toggle Button 
-
-            // //Mapping of the Tree Objects
-            var myMap = new Map();
-            myMap.set('0', '[{ "name": "Top Level NEW1", "parent": "null", "children": [{ "name": "Level 2: A", "parent": "Top Level NEW1", "children": [{ "name": "Son of A", "parent": "Level 2: A", "children": [{ "name": "Grandson of A", "parent": "Son of A" }, { "name": "Granddaughter of A", "parent": "Son of A" }, { "name": "Granddaughter of A", "parent": "Son of A" }] }, { "name": "Daughter of A", "parent": "Level 2: A", "children": [{ "name": "Granddaughter of A", "parent": "Daughter of A" }] }] }, { "name": "Level 2: B", "parent": "Top Level NEW1", "children": [{ "name": "Son of B", "parent": "Level 2: B" }, { "name": "Daughter of B", "parent": "Level 2: B" }] }] }]');
-            myMap.set('1', '[{"name":"Top Level","parent":"null","children":[{"name":"Level 2: A","parent":"Top Level","children":[{"name":"Son of A","parent":"Level 2: A","children":[{"name":"Grandson of A","parent":"Son of A"},{"name":"Granddaughter of A","parent":"Son of A"}]},{"name":"Daughter of A","parent":"Level 2: A","children":[{"name":"Granddaughter of A","parent":"Daughter of A"}]}]},{"name":"Level 2: B","parent":"Top Level","children":[{"name":"Son of B","parent":"Level 2: B"},{"name":"Daughter of B","parent":"Level 2: B"}]}]}]');
-
-            var clicks = 1;
-
-            // aktualisiert die Tree Objekte, je nachdem wie oft der Toggle Button geklickt wurde. (switched zwischen TreeDataOG & TreeDataNew1 )
-            var togglebutton = document.getElementById("toggle");
-            togglebutton.addEventListener('click',
-                function UpdateTreeOnClick() {
-                    // bei gerader anzahl an klicks --> treeData new 1 
-                    // bei ungerader anzahl an klicks --> treeDataOG
-                    clicks++;
-                    var clicksModulo = clicks % 2;
-                    //statt If/else
-                    var parsedTree = JSON.parse(myMap.get(clicksModulo.toString()));
-                    root = parsedTree[0];
-                    root.x0 = height / 2;
-                    root.y0 = 0;
-                    update(root);
-                });
-
+                enableSubmitButton(event);
+            });
+            form.addEventListener('submit', function (event) {
+                // wieso preventDefault benötigt --> bubbling 
+                event.preventDefault();
+                updateTree();
+            });
 
             /**
              * ---------------------------------------------------------------------
@@ -318,11 +119,11 @@
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-            root = treeDataOG[0];
-            root.x0 = height / 2;
-            root.y0 = 0;
+            // root = treeDataOG[0];
+            // root.x0 = height / 2;
+            // root.y0 = 0;
 
-            update(root);
+            // update(root);
 
             d3.select(self.frameElement).style("height", "500px");
 
