@@ -25,10 +25,14 @@ function updateTree() {
     root = parsedTree[0];
     root.x0 = height / 2;
     root.y0 = 0;
+
+    root.children[0].children.forEach(collapse);
+    // root.children.forEach(collapse);
+
     update(root);
     console.log(root);
 }
-input.addEventListener('keyup', function (event) {
+input.addEventListener('keyup', function (event) { 
     enableSubmitButton(event);
 });
 form.addEventListener('submit', function (event) {
@@ -45,7 +49,9 @@ form.addEventListener('submit', function (event) {
 // ************** Generate the tree diagram	 *****************
 var margin = { top: 40, right: 120, bottom: 20, left: 120 },
     width = screen.width - margin.right - margin.left,
-    height = screen.height - margin.top - margin.bottom;
+    height = screen.height - margin.top - margin.bottom,
+    paddingRight = 200,
+    paddingLeft = 200;
 
 var i = 0,
     duration = 750,
@@ -63,7 +69,14 @@ var svg = d3.select("body").append("svg")
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
+//Collapse the node and all it's children 
+function collapse(d) {
+  if(d.children) {
+    d._children = d.children
+    d._children.forEach(collapse)
+    d.children= null
+  }
+}
 function update(source) {
 
     // Compute the new tree layout.
@@ -75,13 +88,10 @@ function update(source) {
 
     // Declare the nodes…
     var node = svg.selectAll("g.node")
-        .data(nodes, function (d) { return d.id || (d.id = ++i); });
+        .data(nodes, function (d) { return d.id || (d.id = ++i); })
+        .style("padding-left", paddingLeft)
+        .style("padding-right", paddingRight);
 
-    //   // Enter the nodes.
-    //   var nodeEnter = node.enter().append("g")
-    // 	  .attr("class", "node")
-    // 	  .attr("transform", function(d) { 
-    // 		  return "translate(" + d.x + "," + d.y + ")"; });
     // Enter any new nodes at the parent's previous position.
     var nodeEnter = node.enter().append("g")
         .attr("class", "node")
@@ -90,6 +100,8 @@ function update(source) {
 
     nodeEnter.append("circle")
         .attr("r", 10)
+        .style("padding-left", paddingLeft)
+        .style("padding-right", paddingRight)
         .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
 
     nodeEnter.append("text")
@@ -108,6 +120,8 @@ function update(source) {
 
     nodeUpdate.select("circle")
         .attr("r", 10)
+        .style("padding-left", paddingLeft)
+        .style("padding-right", paddingRight)
         .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
     nodeUpdate.select("text")
         .style("fill-opacity", 1);
