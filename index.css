@@ -6,10 +6,14 @@
     fill: #fff;
     stroke: steelblue;
     stroke-width: 3px;
+    padding-right: 1000px !important;
+    padding-left: 1000px !important;
+   
 }
 
 .node text {
     font: 12px sans-serif;
+    font-weight: bold;
 }
 
 .link {

@@ -1,0 +1,1 @@
+var myMap = new Map();
