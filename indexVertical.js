@@ -22,16 +22,20 @@ function updateTree() {
     else {
         alert('Fehler, bitte gib einen gültigen Wert ein');
     }
+
     root = parsedTree[0];
     root.x0 = height / 2;
     root.y0 = 0;
 
-    root.children[0].children.forEach(collapse);
-    // root.children.forEach(collapse);
+    //Collapse after the second level 
+    // root.children[0].children.forEach(collapse);
 
+    //Collapse after the first level
+    root.children.forEach(collapse);
     update(root);
     console.log(root);
 }
+
 input.addEventListener('keyup', function (event) { 
     enableSubmitButton(event);
 });
@@ -40,6 +44,7 @@ form.addEventListener('submit', function (event) {
     event.preventDefault();
     updateTree();
 });
+
 /**
      * ---------------------------------------------------------------------
      * DO NOT MODIFY BELOW THIS LINE
@@ -48,8 +53,8 @@ form.addEventListener('submit', function (event) {
 
 // ************** Generate the tree diagram	 *****************
 var margin = { top: 40, right: 120, bottom: 20, left: 120 },
-    width = screen.width - margin.right - margin.left,
-    height = screen.height - margin.top - margin.bottom,
+    width = 3000 - margin.right - margin.left,
+    height = 1500 - margin.top - margin.bottom,
     paddingRight = 200,
     paddingLeft = 200;
 
@@ -70,13 +75,15 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 //Collapse the node and all it's children 
-function collapse(d) {
-  if(d.children) {
-    d._children = d.children
-    d._children.forEach(collapse)
-    d.children= null
-  }
+function collapse(d){
+
+    if(d.childer){
+        d._children = d.children
+        d._children.forEach(collapse)
+        d.children = null
+    }
 }
+
 function update(source) {
 
     // Compute the new tree layout.
@@ -179,6 +186,7 @@ function click(d) {
     } else {
         d.children = d._children;
         d._children = null;
+        
     }
     update(d);
 }

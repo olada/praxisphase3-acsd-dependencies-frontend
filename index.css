@@ -1,3 +1,17 @@
+body{
+    background:rgb(234, 234, 243);
+    padding-left:0;
+    padding-right: 0;
+    
+}
+header{
+    background:rgb(224, 237, 248);
+    margin-left:0;
+    height:70px;
+    width: 100vw;
+    text-align:left;
+  
+}
 .node {
     cursor: pointer;
 }
@@ -6,8 +20,6 @@
     fill: #fff;
     stroke: steelblue;
     stroke-width: 3px;
-    /* padding-right: 1000px !important;
-    padding-left: 1000px !important; */
    
 }
 
@@ -23,7 +35,7 @@
 }
 
 h1{
-    color:steelblue;
+    color: rgb(136, 136, 136);
     text-align: left;
     padding-left:0;
     padding-right: 0;
@@ -43,45 +55,31 @@ img{
     padding-left:0;
     padding-right: 0;
 }
-header{
-    background:rgb(224, 237, 248);
-    margin-left:0;
-    margin-right:120;
-    height:70px;
-    align:left;
-}
-footer{
-    margin-right: 21px !important;
-    margin-left: 21px !important;
-}
+
 #date{
     text-align: right;
     color:rgb(105, 105, 105);
     font-size:0.75rem;
 }
-body{
-    background:rgb(234, 234, 243);
-    padding-left:0;
-    padding-right: 0;
-    
-}
+
 svg{
-    background:rgb(234, 234, 243);
+    background:rgb(226, 226, 231) !important;
     padding-left:0;
     padding-right: 0;
-    margin-right: 21px !important;
-    margin-left: 21px !important;
-    
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+    border-radius:5px !important;
+    width: 100vw;
 
 }
 #inputToHandle{
     margin-right: 21px !important;
     margin-left: 21px !important;
-    background: rgb(182, 180, 180);
-    border-color: rgb(95, 94, 94);
+    /* background: rgb(202, 201, 201); */
+    border-color: rgb(151, 149, 149) !important;
     height:80px;
     padding-top:20px;
-    width:960px !important;
+    width: 60vw !important;
     padding-left: 15px;
     border-radius:5px;
 }
@@ -96,6 +94,10 @@ form{
 }
 button{
     border-radius:4px;
+}
+footer{
+    margin-right: 21px !important;
+    margin-left: 21px !important;
 }
 
 
