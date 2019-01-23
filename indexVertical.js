@@ -35,7 +35,6 @@ function updateTree() {
     update(root);
     console.log(root);
 }
-
 input.addEventListener('keyup', function (event) { 
     enableSubmitButton(event);
 });
@@ -55,6 +54,7 @@ form.addEventListener('submit', function (event) {
 var margin = { top: 40, right: 120, bottom: 20, left: 120 },
     width = 3000 - margin.right - margin.left,
     height = 1500 - margin.top - margin.bottom,
+// Abstand zwischen den Nodes 
     paddingRight = 200,
     paddingLeft = 200;
 
@@ -75,13 +75,13 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 //Collapse the node and all it's children 
-function collapse(d){
 
-    if(d.childer){
-        d._children = d.children
-        d._children.forEach(collapse)
-        d.children = null
-    }
+function collapse(d) {
+  if(d.children) {
+    d._children = d.children
+    d._children.forEach(collapse)
+    d.children= null
+  }
 }
 
 function update(source) {
@@ -107,6 +107,7 @@ function update(source) {
 
     nodeEnter.append("circle")
         .attr("r", 10)
+        // Abstand zwischen den Nodes 
         .style("padding-left", paddingLeft)
         .style("padding-right", paddingRight)
         .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
@@ -177,6 +178,7 @@ function update(source) {
         d.x0 = d.x;
     });
 }
+
 
 // Toggle children on click.
 function click(d) {
