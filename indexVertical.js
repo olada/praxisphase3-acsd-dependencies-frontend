@@ -53,10 +53,7 @@ form.addEventListener('submit', function (event) {
 // ************** Generate the tree diagram	 *****************
 var margin = { top: 40, right: 120, bottom: 20, left: 120 },
     width = 3000 - margin.right - margin.left,
-    height = 1500 - margin.top - margin.bottom,
-// Abstand zwischen den Nodes 
-    paddingRight = 200,
-    paddingLeft = 200;
+    height = 1500 - margin.top - margin.bottom;
 
 var i = 0,
     duration = 750,
@@ -95,9 +92,8 @@ function update(source) {
 
     // Declare the nodes…
     var node = svg.selectAll("g.node")
-        .data(nodes, function (d) { return d.id || (d.id = ++i); })
-        .style("padding-left", paddingLeft)
-        .style("padding-right", paddingRight);
+        .data(nodes, function (d) { return d.id || (d.id = ++i); });
+        
 
     // Enter any new nodes at the parent's previous position.
     var nodeEnter = node.enter().append("g")
@@ -107,10 +103,7 @@ function update(source) {
 
     nodeEnter.append("circle")
         .attr("r", 10)
-        // Abstand zwischen den Nodes 
-        .style("padding-left", paddingLeft)
-        .style("padding-right", paddingRight)
-        .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
+        .style("fill", function (d) { return d._children ? "rgb(0,63,116)" : "#fff"; });
 
     nodeEnter.append("text")
         .attr("y", function (d) {
@@ -128,9 +121,7 @@ function update(source) {
 
     nodeUpdate.select("circle")
         .attr("r", 10)
-        .style("padding-left", paddingLeft)
-        .style("padding-right", paddingRight)
-        .style("fill", function (d) { return d._children ? "lightsteelblue" : "#fff"; });
+        .style("fill", function (d) { return d._children ? "rgb(0,63,116)" : "#fff"; });
     nodeUpdate.select("text")
         .style("fill-opacity", 1);
 

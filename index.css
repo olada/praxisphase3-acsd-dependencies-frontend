@@ -1,16 +1,11 @@
 body{
     background:rgb(234, 234, 243);
-    padding-left:0;
-    padding-right: 0;
-    
 }
 header{
-    background:rgb(224, 237, 248);
     margin-left:0;
     height:70px;
     width: 100vw;
     text-align:left;
-  
 }
 .node {
     cursor: pointer;
@@ -18,7 +13,7 @@ header{
 
 .node circle {
     fill: #fff;
-    stroke: steelblue;
+    stroke: rgb(0,63,116);
     stroke-width: 3px;
    
 }
@@ -35,25 +30,15 @@ header{
 }
 
 h1{
-    color: rgb(136, 136, 136);
+    padding-top:20px;
+    color: rgb(0,63,116);
     text-align: left;
-    padding-left:0;
+    padding-left:15px;
     padding-right: 0;
 }
 img{
-    margin-left: 21px !important;
-    width:30px;
-    height:45px;
-    padding-left:0;
-    padding-right: 0;
-}
-.col-1{
-    padding-right:0;
-}
-
-.col-11{
-    padding-left:0;
-    padding-right: 0;
+    height:90px; 
+    width: 100vw;
 }
 
 #date{
@@ -64,8 +49,6 @@ img{
 
 svg{
     background:rgb(226, 226, 231) !important;
-    padding-left:0;
-    padding-right: 0;
     margin-right: 10px !important;
     margin-left: 10px !important;
     border-radius:5px !important;
@@ -75,7 +58,6 @@ svg{
 #inputToHandle{
     margin-right: 21px !important;
     margin-left: 21px !important;
-    /* background: rgb(202, 201, 201); */
     border-color: rgb(151, 149, 149) !important;
     height:80px;
     padding-top:20px;
@@ -85,7 +67,7 @@ svg{
 }
 
 form{
-    padding-top:50px;
+    padding-top:20px;
 
 }
 #attributeName{
