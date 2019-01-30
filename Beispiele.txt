@@ -1,0 +1,3 @@
+gute Beispiele: co_IS016 >Fitch st issuer rating
+		co_i0115 >Original Issue Price 
+		co#UIS009>GTI Code 

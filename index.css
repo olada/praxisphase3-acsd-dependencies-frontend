@@ -7,6 +7,57 @@ header{
     width: 100vw;
     text-align:left;
 }
+
+form{
+    padding-top:30px;
+}
+span{
+    font-size:16pt;
+}
+h1{
+    padding-top:40px;
+    color: rgb(0,63,116);
+    text-align: left;
+    padding-left:15px;
+}
+
+img{
+    height:120px; 
+    width: 100vw;
+}
+
+svg{
+    background:rgb(226, 226, 231) !important;
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+    border-radius:5px !important;
+    width: 100vw;
+
+}
+#inputToHandle{
+    margin-right: 21px !important;
+    margin-left: 21px !important;
+    border-color: rgb(151, 149, 149) !important;
+    height:80px;
+    padding-top:20px;
+    width: 60vw !important;
+    padding-left: 15px;
+    border-radius:5px;
+}
+
+#attributeName{
+    border:1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13pt;
+}
+
+button{
+    border-radius:4px;
+    background-color: rgb(141,168,197);
+    border-color: rgb(141,168,197);
+    color: white;
+    font-size: 13pt;
+}
 .node {
     cursor: pointer;
 }
@@ -29,54 +80,12 @@ header{
     stroke-width: 2px;
 }
 
-h1{
-    padding-top:20px;
-    color: rgb(0,63,116);
-    text-align: left;
-    padding-left:15px;
-    padding-right: 0;
-}
-img{
-    height:90px; 
-    width: 100vw;
-}
-
 #date{
     text-align: right;
     color:rgb(105, 105, 105);
     font-size:0.75rem;
 }
 
-svg{
-    background:rgb(226, 226, 231) !important;
-    margin-right: 10px !important;
-    margin-left: 10px !important;
-    border-radius:5px !important;
-    width: 100vw;
-
-}
-#inputToHandle{
-    margin-right: 21px !important;
-    margin-left: 21px !important;
-    border-color: rgb(151, 149, 149) !important;
-    height:80px;
-    padding-top:20px;
-    width: 60vw !important;
-    padding-left: 15px;
-    border-radius:5px;
-}
-
-form{
-    padding-top:20px;
-
-}
-#attributeName{
-    border:1px solid #ccc;
-    border-radius: 4px;
-}
-button{
-    border-radius:4px;
-}
 footer{
     margin-right: 21px !important;
     margin-left: 21px !important;

@@ -27,11 +27,9 @@ function updateTree() {
     root.x0 = height / 2;
     root.y0 = 0;
 
-    //Collapse after the second level 
-    // root.children[0].children.forEach(collapse);
-
     //Collapse after the first level
     root.children.forEach(collapse);
+
     update(root);
     console.log(root);
 }
@@ -72,7 +70,6 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 //Collapse the node and all it's children 
-
 function collapse(d) {
   if(d.children) {
     d._children = d.children
@@ -128,7 +125,7 @@ function update(source) {
     // Transition exiting nodes to the parent's new position.
     var nodeExit = node.exit().transition()
         .duration(duration)
-        .attr("transform", function (d) { return "translate(" + source.y + "," + source.x + ")"; })
+        .attr("transform", function (d) { return "translate(" + source.x + "," + source.y + ")"; })
         .remove();
 
     nodeExit.select("circle")
@@ -165,11 +162,10 @@ function update(source) {
 
     // Stash the old positions for transition.
     nodes.forEach(function (d) {
-        d.y0 = d.y;
         d.x0 = d.x;
+        d.y0 = d.y;
     });
 }
-
 
 // Toggle children on click.
 function click(d) {
